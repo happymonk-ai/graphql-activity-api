@@ -57,41 +57,41 @@ app.use('/graphql', graphqlHTTP(req => ({
   // ...
 })))
 
-// const server = app.listen(4000, () => {
-//     console.log(`GraphQL Server running on http://localhost:4000/graphql`)
+const server = app.listen(4000, () => {
+    console.log(`GraphQL Server running on http://localhost:4000/graphql`)
 
-//     // create and use the websocket server
-//     const path = '/subscriptions'
-//     const wsServer = new ws.Server({
-//         server,
-//         path
-//     });
+    // create and use the websocket server
+    const path = '/subscriptions'
+    const wsServer = new ws.Server({
+        server,
+        path
+    });
 
-//     useServer(
-//         {
-//             schema,
-//             context: {
-//                 pubsub
-//             },
-//             execute,
-//             subscribe,
-//             onConnect: (ctx) => {
-//                 console.log('Connect');
-//             },
-//             onSubscribe: (ctx, msg) => {
-//                 console.log('Subscribe');
-//             },
-//             onNext: (ctx, msg, args, result) => {
-//                 console.debug('Next');
-//             },
-//             onError: (ctx, msg, errors) => {
-//                 console.error('Error');
-//             },
-//             onComplete: (ctx, msg) => {
-//                 console.log('Complete');
-//             },
-//         },
-//         wsServer
-//     );
-//     console.log(`WebSockets listening on ws://localhost:4000/subscriptions`)
-// });
+    useServer(
+        {
+            schema,
+            context: {
+                pubsub
+            },
+            execute,
+            subscribe,
+            onConnect: (ctx) => {
+                console.log('Connect');
+            },
+            onSubscribe: (ctx, msg) => {
+                console.log('Subscribe');
+            },
+            onNext: (ctx, msg, args, result) => {
+                console.debug('Next');
+            },
+            onError: (ctx, msg, errors) => {
+                console.error('Error');
+            },
+            onComplete: (ctx, msg) => {
+                console.log('Complete');
+            },
+        },
+        wsServer
+    );
+    console.log(`WebSockets listening on ws://localhost:4000/subscriptions`)
+});
