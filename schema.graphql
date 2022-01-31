@@ -1,0 +1,17 @@
+
+type Query {
+  info: String!
+}
+
+type Mutation {
+  post(class: String!, chars: String!): Activity!
+}
+
+type Activity {
+  class: String!
+  chars: String!
+}
+
+type Subscription {
+  newActivity: Activity
+}
