@@ -63,11 +63,10 @@ class ActivityAPI{
   static async start() {
       const nc = await connect({ servers: "nats://164.52.213.244:4222" });
       const sub = nc.subscribe("Activity");
+      var TextDecoder = textEncoding.TextDecoder;
 
       try{
           for await (const m of sub) { 
-              // Converting buffer to string
-              var TextDecoder = textEncoding.TextDecoder;
               const block_str = new TextDecoder().decode(m.data)
               const block_dict = JSON.parse(block_str)
               console.log("The message received : \n", block_dict)
