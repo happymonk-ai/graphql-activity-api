@@ -1,4 +1,4 @@
-// @ts-check
+
 const { createServer } = require("http");
 const express = require("express");
 const { execute, subscribe } = require("graphql");
