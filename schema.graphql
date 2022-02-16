@@ -1,0 +1,36 @@
+
+type Query {
+  info: String!
+}
+
+type Mutation {
+  post(class: String!, chars: String!): Activity!
+}
+
+type Subscription {
+    newActivity: Activity
+}
+
+type Activity {
+    deviceId: String!
+    geo: [Geo]!
+    timestamp: String!
+    trackID: String!
+    audience: [String]!
+    peopleInvoled: [String]!
+    vehicleInvolved: [Vehicle]!
+    peopleAlert: [String]!
+    personMotion: [String]!
+    activityVehicle: [String]!
+ }
+
+type Geo{
+    Lat: String!
+    Lon: String!
+}
+
+type Vehicle{
+  class: String!
+  chars: String!
+}
+
